@@ -4,7 +4,7 @@ import movies from "../rawdata/movies.json";
 const Billboard = () => {
   console.log("movies", movies,Math.floor(Math.random()*10));
   var selectedMovie = Math.floor(Math.random()*10)
-  if(selectedMovie>4){
+  if(selectedMovie>3){
     selectedMovie =0
   }
   return (

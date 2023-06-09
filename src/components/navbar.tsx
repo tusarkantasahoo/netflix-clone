@@ -1,6 +1,15 @@
+// @ts-nocheck 
+'use client'
 import NavbarItem from "./navbaritem";
 import { BsSearch, BsBell, BsChevronDown } from "react-icons/bs";
+import { useRouter } from 'next/navigation';
 const Navbar = () => {
+  const router = useRouter()
+  var  userData = JSON.parse(localStorage.getItem("STORING_AUTH_DATA"));
+  console.log("user data",userData);
+  if(!userData){
+    router.push("/auth")
+  }
   return (
     <nav className="w-full fixed z-40">
       <div
@@ -50,7 +59,7 @@ const Navbar = () => {
               <img src="./images/default-blue.png" />
             </div>
             <div className="text-gray-200 hover:text-gray-400 cursor-pointer">
-              {/* <BsChevronDown /> */} Tusar
+              {/* <BsChevronDown /> */} {userData&&userData.name?userData.name:null}
             </div>
           </div>
         </div>

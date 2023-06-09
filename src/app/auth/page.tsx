@@ -1,8 +1,35 @@
+// @ts-nocheck 
 'use client'
 import Input from "../../components/input";
 import {useState} from "react";
+import {
+  facebookProvider,
+  googleProvider,
+} from "./config/authMethod.js";
+import socialMediaAuth from "./service/auth.js";
+import { useRouter } from 'next/navigation';
 const Auth = () => {
+  const router = useRouter()
     const [email,setEmail] = useState("")
+
+    async function handelOnClick(provider) {
+      const res = await socialMediaAuth(provider);
+      console.log(res);
+      if (res !== null && res !== undefined) {
+        var userData = {
+          name: res.displayName,
+          email: res.email,
+          phone: res.phoneNumber,
+          image: res.photoURL,
+          dataFrom: "google",
+        };
+  
+        console.log("user data", userData);
+        localStorage.setItem("STORING_AUTH_DATA",JSON.stringify(userData))
+        router.push("/")
+  
+      }
+    }
   return (
     <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
       <div className="bg-black w-full h-full lg:bg-opacity-50">
@@ -17,7 +44,10 @@ const Auth = () => {
             <Input label="Email" onChange={(e:any)=>{setEmail(e.target.value)}} id="email" type="email" value={email} />
             <Input label="Password" onChange={(e:any)=>{setEmail(e.target.value)}} id="password" type="password" value=""/>
             <button className="bg-red-600 py-3 text-white rounded-md w-full font-600 mt-6 hover:bg-red-700">Login</button>
-            <p className="text-neutral-500 text-lg mt-10">First time using Netflix? <span className="text-white text-bold hover:underline cursor-pointer">Signup</span></p>
+            <div className="d-flex jcc">
+                    <img   onClick={() => handelOnClick(googleProvider)} className="h-10 w-10  ml-auto mr-auto cursor-pointer" src="./images/googlelogin.png"></img>
+              </div>
+            <p className="text-neutral-500 text-lg">First time using Netflix? <span className="text-white text-bold hover:underline cursor-pointer">Signup</span></p>
             </div>
           </div>
         </div>
