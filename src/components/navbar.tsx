@@ -1,15 +1,20 @@
 // @ts-nocheck 
 'use client'
 import NavbarItem from "./navbaritem";
+import {useState,useEffect} from "react";
 import { BsSearch, BsBell, BsChevronDown } from "react-icons/bs";
 import { useRouter } from 'next/navigation';
 const Navbar = () => {
   const router = useRouter()
-  var  userData = JSON.parse(localStorage.getItem("STORING_AUTH_DATA"));
+  var userData=null
+  useEffect(() => {
+  userData = JSON.parse(localStorage.getItem("STORING_AUTH_DATA"));
   console.log("user data",userData);
   if(!userData){
     router.push("/auth")
   }
+  }, [])
+
   return (
     <nav className="w-full fixed z-40">
       <div

@@ -1,12 +1,12 @@
 // @ts-nocheck 
 'use client'
 import Input from "../../components/input";
-import {useState} from "react";
+import {useState,useEffect} from "react";
 import {
   facebookProvider,
   googleProvider,
-} from "./config/authMethod.js";
-import socialMediaAuth from "./service/auth.js";
+} from "../../authservice/config/authMethod";
+import socialMediaAuth from "../../authservice/service/auth.tsx";
 import { useRouter } from 'next/navigation';
 const Auth = () => {
   const router = useRouter()
