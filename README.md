@@ -1,3 +1,10 @@
+Checkout the UI
+Auth page. Please use Goolge login to enter dashboard page
+![image](https://github.com/tusarkantasahoo/netflix-clone/assets/30628537/01ffffc8-7dba-4549-bba3-8c8833b71538)
+Dashobard page
+![image](https://github.com/tusarkantasahoo/netflix-clone/assets/30628537/40919d86-c382-45d7-bdd8-dfeba1419c15)
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
